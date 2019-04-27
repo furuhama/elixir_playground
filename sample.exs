@@ -67,3 +67,9 @@ IO.puts ([a: 0] ++ keyword_list)[:a] #=> 0
 map = %{:a => 1, 2 => :b}
 IO.puts map[2]
 IO.puts map.a
+
+odd? = &(rem(&1, 2) != 0)
+IO.puts 1..100_000 |> Stream.map(&(&1 * 3)) |> Stream.filter(odd?) |> Enum.sum
+
+stream = Stream.cycle([1, 2, 3])
+IO.inspect Enum.take(stream, 10)
