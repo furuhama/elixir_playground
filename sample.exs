@@ -73,3 +73,8 @@ IO.puts 1..100_000 |> Stream.map(&(&1 * 3)) |> Stream.filter(odd?) |> Enum.sum
 
 stream = Stream.cycle([1, 2, 3])
 IO.inspect Enum.take(stream, 10)
+
+pid = spawn fn -> 1 + 2 end
+Process.sleep(500)
+IO.puts Process.alive?(pid)
+IO.puts Process.alive?(self())
